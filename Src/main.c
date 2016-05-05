@@ -64,7 +64,7 @@ static void printU32(char*,uint32_t);
 static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-void prepareData(uint8_t* data,uint16_t len);
+//void prepareData(uint8_t* data,uint16_t len);
 
 #define DLIM 64
 TIM_HandleTypeDef htim5;
@@ -94,7 +94,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
   USBD_CDC_HandleTypeDef *hcdc;
   uint16_t count=0;
-  uint32_t wait =0,start,stop,diff;
+//  uint32_t wait =0,start,stop,diff;
   uint8_t dataLength = 0;
   uint8_t *dataPointer = NULL;
   /* USER CODE END 1 */
@@ -147,9 +147,9 @@ int main(void)
 	  {
 		  dataLength = GetDataArrived();
 		  dataPointer = GetDataPtr();
-		  CDC_Transmit_FS((uint8_t*)"\n_", 2);
+		  CDC_Transmit_FS((uint8_t*)"\n_", 2); // Add new line char
 		  CDC_Transmit_FS(dataPointer, dataLength);
-		  CDC_Transmit_FS((uint8_t*)"_\n", 2);
+		  CDC_Transmit_FS((uint8_t*)"_\n", 2); // Add new line char
 		  SetDataArrived(0);
 	  }
   }
